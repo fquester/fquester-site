@@ -1,3 +1,12 @@
+FROM composer:2 AS vendor
+
+WORKDIR /app
+
+COPY composer.json ./
+COPY composer.lock* ./
+
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader --ignore-platform-reqs
+
 FROM php:8.3-apache
 
 RUN apt-get update \
@@ -15,6 +24,7 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 WORKDIR /var/www/html
 
 COPY . /var/www/html
+COPY --from=vendor /app/vendor /var/www/html/vendor
 
 RUN mkdir -p storage/framework/views storage/cache \
     && chown -R www-data:www-data /var/www/html

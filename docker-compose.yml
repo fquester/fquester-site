@@ -1,10 +1,10 @@
+version: '3.8'
 services:
   web:
     build: .
     container_name: game-site
-    ports:
-      - "8080:80"
     environment:
+      TZ: ${TZ:-Europe/Moscow}
       APP_DEBUG: ${APP_DEBUG:-false}
       NEXTCLOUD_URL: ${NEXTCLOUD_URL}
       NEXTCLOUD_USER: ${NEXTCLOUD_USER}
@@ -12,4 +12,11 @@ services:
       NEXTCLOUD_BASE_PATH: ${NEXTCLOUD_BASE_PATH:-}
       NEXTCLOUD_VERIFY_SSL: ${NEXTCLOUD_VERIFY_SSL:-true}
       NEXTCLOUD_CACHE_TTL: ${NEXTCLOUD_CACHE_TTL:-3600}
+    networks:
+      - infra_network
     restart: unless-stopped
+
+networks:
+  infra_network:
+    name: infra_default
+    external: true

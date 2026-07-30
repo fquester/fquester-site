@@ -1,0 +1,8 @@
+.env
+.git
+.gitignore
+README.md
+storage/framework/views/*
+storage/cache/*
+!storage/framework/views/.gitkeep
+!storage/cache/.gitkeep

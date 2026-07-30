@@ -1,0 +1,344 @@
+@font-face {
+	font-family: teko;
+	src: url(res/teko.ttf) format('truetype');
+}
+
+html {
+	/* Резервируем место под вертикальный скроллбар всегда — иначе на
+	   страницах с мало контентом (без скролла) центрированный блок
+	   съезжает вправо относительно страниц со скроллом. */
+	overflow-y: scroll;
+	scrollbar-gutter: stable;
+
+	/* Фон вешаем на html, а не на body: html всегда растянут на весь
+	   viewport, а body — только на высоту своего контента. Если фон
+	   на body, а страница короткая (мало текста) — низ экрана остаётся
+	   не закрашенным. */
+	min-height: 100%;
+	background-color: #14171c;
+	background-image: url(res/bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+body {
+	margin: 0;
+	font-family: teko;
+}
+
+.header {
+	text-align: right;
+	background: url(res/head.png) repeat-x;
+	padding: 40px 10px 40px 0px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.header_case {
+	width: 670px;
+	margin: 0px auto 0 auto;
+}
+
+.header_links {
+	margin-top: -10px;
+}
+
+.header_links a {
+	font-size: 20pt;
+	padding: 5px 12px 5px 12px;
+	margin-right: 22px;
+	color: white;
+	text-decoration: none;
+}
+
+.header_links_cases:hover {
+	background-color: rgba(0, 0, 0, .4);
+}
+
+.header_links_cases:active {
+	background-color: rgba(0, 0, 0, 10);
+}
+
+.header_links_cases:focus {
+	background-color: rgba(0, 0, 0, .4);
+}
+
+.header_logo {
+	transform: scale(0.65);
+	float: left;
+	margin-top: -90px;
+	margin-left: -40px;
+}
+
+.content {
+	width: 700px;
+	background: url(res/main.png) repeat-y;
+	margin: 0px auto 0 auto;
+}
+
+.content_case {
+	width: 640px;
+	margin: 0 auto 0 auto;
+	padding-top: 120px;
+	padding-bottom: 1px;
+}
+
+.content_bottom {
+	width: 700px;
+	float: left;
+	margin: 0px auto 0 auto;
+}
+
+.content p {
+	color: rgb(220, 220, 220);
+	text-align: justify;
+	font-size: 14pt;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.content h2 {
+	color: rgb(255, 234, 83);
+	font-size: 24pt;
+}
+
+.content_images {
+	display: block;
+	width: 580px;
+	margin: 0 auto 0 auto;
+	outline: 2px solid #fff;
+}
+
+.content_links {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px;
+}
+
+.content_links img {
+	margin: auto 10px auto 10px;
+}
+
+.content_links_cases:hover {
+	opacity: .65;
+}
+
+.content_links_cases:focus {
+	opacity: 1.;
+}
+
+
+.content_pr_img {
+	float: left;
+	width: 250px;
+	padding-top: 30px;
+}
+
+.content_pr_case {
+	width: 380px;
+	margin-left: 250px;
+}
+
+.content_pr_case {
+	padding-left: 10px;
+	width: 380px;
+	margin-left: 250px;
+}
+
+.content_pr_case s {
+	margin-left: 250px;
+	text-decoration: none;
+	color: RGB(255, 0, 0);
+	font-size: 26pt;
+	padding-left: 10px;
+	padding-right: 10px;
+	outline: 2px dashed red;
+	background-color: RGBA(255, 255, 64, 0.2);
+}
+
+hr {
+	transform: scale(1);
+	background: url(res/divider.png) no-repeat top center;
+	height: 40px;
+	border: none !important;
+	position: relative;
+	top: -10px;
+}
+
+footer {
+	color: white;
+	text-align: center;
+	width: 500px;
+	margin: 0 auto 0 auto;
+}
+
+.tb {
+	margin: 0px auto;
+	color: rgb(255, 255, 150);
+	border: 4px solid;
+	border-collapse: inherit;
+	border-color: rgb(240, 179, 15);
+}
+
+.download {
+	margin: 0px auto;
+	color: rgb(255, 255, 150);
+	border: 2px solid;
+	border-color: rgb(240, 179, 15);
+	font-size: 12pt;
+}
+
+.downloadlink {
+	font-size: 12pt;
+	color: rgb(255, 255, 150);
+}
+
+.downloadlink:hover {
+	text-decoration-line: underline;
+	text-decoration-color: darkgray;
+	color: rgb(255, 255, 255);
+}
+
+.downloadlink {
+	font-size: 12pt;
+	color: rgb(255, 255, 150);
+}
+
+.downloadlink:hover {
+	text-decoration-line: underline;
+	text-decoration-color: darkgray;
+	color: rgb(255, 255, 255);
+}
+
+li {
+	color: rgb(220, 220, 220);
+	text-align: justify;
+	text-indent: -0.8em;
+	font-size: 14pt;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 30px;
+}
+
+
+/* Слайдер */
+
+
+.slider {
+	position: relative;
+	max-width: 680px;
+	margin: 50px auto;
+	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+}
+
+.slider input[name="switch"] {
+	display: none;
+}
+
+.switch {
+	position: absolute;
+	left: 0;
+	bottom: -40px;
+	text-align: center;
+	width: 100%;
+}
+
+.switch label {
+	display: inline-block;
+	width: 16px;
+	height: 8px;
+	cursor: pointer;
+	margin: 0 3px;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, .8);
+	border-radius: 50%;
+	border: 2px solid rgb(240, 179, 15);
+	background-color: #738290;
+
+}
+
+#btn1:checked~.switch label[for="btn1"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn2:checked~.switch label[for="btn2"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn3:checked~.switch label[for="btn3"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn4:checked~.switch label[for="btn4"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn5:checked~.switch label[for="btn5"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn6:checked~.switch label[for="btn6"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn7:checked~.switch label[for="btn7"] {
+	background-color: rgb(240, 179, 15);
+}
+
+#btn8:checked~.switch label[for="btn8"] {
+	background-color: rgb(240, 179, 15);
+}
+
+
+.slider-inner {
+	overflow: hidden;
+
+}
+
+.slides {
+	display: flex;
+	width: 100%;
+	transition: all 0.5s;
+}
+
+.slides img {
+	width: 100%;
+	flex-shrink: 0;
+
+}
+
+#btn1:checked~.slider-inner slides {
+	transform: translate(0);
+}
+
+#btn2:checked~.slider-inner .slides {
+	transform: translateX(-100%);
+}
+
+#btn3:checked~.slider-inner .slides {
+	transform: translateX(-200%);
+}
+
+#btn4:checked~.slider-inner .slides {
+	transform: translateX(-300%);
+}
+
+#btn5:checked~.slider-inner .slides {
+	transform: translateX(-400%);
+}
+
+#btn6:checked~.slider-inner .slides {
+	transform: translateX(-500%);
+}
+
+#btn7:checked~.slider-inner .slides {
+	transform: translateX(-600%);
+}
+
+#btn8:checked~.slider-inner .slides {
+	transform: translateX(-700%);
+}

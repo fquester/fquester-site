@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    container_name: game-site
+    ports:
+      - "8080:80"
+    environment:
+      APP_DEBUG: ${APP_DEBUG:-false}
+      NEXTCLOUD_URL: ${NEXTCLOUD_URL}
+      NEXTCLOUD_USER: ${NEXTCLOUD_USER}
+      NEXTCLOUD_APP_PASSWORD: ${NEXTCLOUD_APP_PASSWORD}
+      NEXTCLOUD_BASE_PATH: ${NEXTCLOUD_BASE_PATH:-}
+      NEXTCLOUD_VERIFY_SSL: ${NEXTCLOUD_VERIFY_SSL:-true}
+      NEXTCLOUD_CACHE_TTL: ${NEXTCLOUD_CACHE_TTL:-3600}
+    restart: unless-stopped

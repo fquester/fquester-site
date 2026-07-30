@@ -1,0 +1,7 @@
+storage/framework/views/*
+!storage/framework/views/.gitkeep
+storage/cache/*
+!storage/cache/.gitkeep
+.env
+/vendor
+/.osp

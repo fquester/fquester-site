@@ -1,22 +1,24 @@
-version: '3.8'
 services:
   web:
     build: .
+    pull_policy: build
     container_name: game-site
+    restart: unless-stopped
+    dns:
+      - ${DNS_SERVER}
     environment:
-      TZ: ${TZ:-Europe/Moscow}
-      APP_DEBUG: ${APP_DEBUG:-false}
+      TZ: ${TZ}
+      APP_DEBUG: 'false'
       NEXTCLOUD_URL: ${NEXTCLOUD_URL}
       NEXTCLOUD_USER: ${NEXTCLOUD_USER}
       NEXTCLOUD_APP_PASSWORD: ${NEXTCLOUD_APP_PASSWORD}
-      NEXTCLOUD_BASE_PATH: ${NEXTCLOUD_BASE_PATH:-}
-      NEXTCLOUD_VERIFY_SSL: ${NEXTCLOUD_VERIFY_SSL:-true}
-      NEXTCLOUD_CACHE_TTL: ${NEXTCLOUD_CACHE_TTL:-3600}
+      NEXTCLOUD_BASE_PATH: ${NEXTCLOUD_BASE_PATH}
+      NEXTCLOUD_VERIFY_SSL: 'true'
+      NEXTCLOUD_CACHE_TTL: '300'
     networks:
-      - infra_network
-    restart: unless-stopped
+      - proxy
 
 networks:
-  infra_network:
-    name: infra_default
+  proxy:
+    name: ${PROXY_NETWORK}
     external: true
